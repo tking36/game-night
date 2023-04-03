@@ -1,0 +1,5 @@
+export const PLAYER_LIST_REQUEST = 'PLAYER_LIST_REQUEST';
+export const PLAYER_LIST_SUCCESS = 'PLAYER_LIST_SUCCESS';
+export const PLAYER_LIST_FAIL = 'PLAYER_LIST_FAIL';
+export const ADD_WIN = 'ADD_WIN';
+export const SUB_WIN = 'SUB_WIN';
