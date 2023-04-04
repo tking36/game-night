@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
-import {playerReducer, winReducer} from "./reducers/playerReducer";
+import {playerReducer, winReducer, addNewPlayer, deletePlayer} from "./reducers/playerReducer";
 // import {players} from "./players";
 
 
@@ -35,6 +35,8 @@ const store = configureStore({
     reducer: {
         win: winReducer,
         player: playerReducer,
+        add: addNewPlayer,
+        delete: deletePlayer, 
     },
     preloadedState: {
         player: {

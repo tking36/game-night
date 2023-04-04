@@ -4,6 +4,8 @@ import {Container, Row, Col} from 'react-bootstrap'
 import bootstrap from 'bootstrap'
 import Players from '../components/Players'
 import PlayerButton from '../components/PlayerButton'
+import AddPlayer from '../components/AddPlayer'
+import DeletePlayer from '../components/DeletePlayer'
 // import players from '../players'
 
 const Home = () => {
@@ -15,7 +17,9 @@ const Home = () => {
     <Container fluid className='home-container'>
         <h1 className='title'>Home</h1>
         <Row className='justify-content-center'>
-            <Col>1 of 3</Col>
+            <Col>
+              <AddPlayer/>
+            </Col>
             <Col xs={6}>
                 <Players/>
             </Col>
@@ -23,6 +27,7 @@ const Home = () => {
             {players.map((player) => (
               <div key={player.name} >
                 <PlayerButton  player={player}/>
+                <DeletePlayer player={player}/>
               </div>
             ))}
               
