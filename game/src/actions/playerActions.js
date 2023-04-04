@@ -1,4 +1,4 @@
-import { ADD_WIN, SUB_WIN, PLAYER_LIST_REQUEST, PLAYER_LIST_SUCCESS, PLAYER_LIST_FAIL, ADD_PLAYER_FAIL, ADD_PLAYER_REQUEST, ADD_PLAYER_SUCCESS, DELETE_PLAYER_FAIL, DELETE_PLAYER_SUCCESS, DELETE_PLAYER_REQUEST} from "../constants/playerConstants";
+import { ADD_WIN, SUB_WIN, PLAYER_LIST_REQUEST, PLAYER_LIST_SUCCESS, PLAYER_LIST_FAIL, ADD_PLAYER_FAIL, ADD_PLAYER_REQUEST, ADD_PLAYER_SUCCESS, DELETE_PLAYER_FAIL, DELETE_PLAYER_SUCCESS, DELETE_PLAYER_REQUEST, ADD_CHAMP_SUCCESS, ADD_SCORE_FAIL, ADD_SCORE_REQUEST, ADD_SCORE_SUCCESS, SUB_SCORE_FAIL, SUB_SCORE_REQUEST, SUB_SCORE_SUCCESS, SCORE_RESET } from "../constants/playerConstants";
 import axios from "axios";
 
 
@@ -27,7 +27,7 @@ export const getPlayers = () => async (dispatch) => {
 export const addPlayer = (name) => async (dispatch) => {
     try {
         dispatch({ type: ADD_PLAYER_REQUEST });
-        const { data } = await axios.post("http://localhost:8000/api/players", {name, wins: 0, champion: 0});
+        const { data } = await axios.post("http://localhost:8000/api/players", {name});
         dispatch({
             type: ADD_PLAYER_SUCCESS,
             payload: data,
@@ -67,16 +67,6 @@ export const deletePlayer = (id) => async (dispatch) => {
 };
 
 
-// export const deletePlayer = (id) => async (dispatch) => {
-//     try {
-//         await axios.delete(`http://localhost:8000/api/players/${id}`);
-//         dispatch({ type: DELETE_PLAYER, payload: id });
-//         dispatch(getPlayers());
-//     } catch (error) {
-//         console.log(error)
-//     }
-// };
-
 
 // ADD AND SUBTRACT WIN
 export const addWin = (player) => async (dispatch) => {
@@ -100,4 +90,67 @@ export const addWin = (player) => async (dispatch) => {
             console.log(error)
         }
         }
+
+    
+    
+    // ADD AND SUBTRACT CHAMPIONSHIP
+    export const addChamp = (player) => async (dispatch) => {
+        try {
+            const updatedPlayer = {...player, champion: player.champion + 1};
+            const {data} = await axios.put(`http://localhost:8000/api/players/${player.id}`, updatedPlayer);
+            dispatch({ type:ADD_CHAMP_SUCCESS, payload: data });
+            dispatch(getPlayers());
+        } catch (error) {
+            console.log(error)
+        }
+        }
+
+    export const subChamp = (player) => async (dispatch) => {
+        try {
+            const updatedPlayer = {...player, champion: player.champion - 1};
+            const {data} = await axios.put(`http://localhost:8000/api/players/${player.id}`, updatedPlayer);
+            dispatch({ type:ADD_CHAMP_SUCCESS, payload: data });
+            dispatch(getPlayers());
+        } catch (error) {
+            console.log(error)
+        }
+        }
+
+    // ADD AND SUBTRACT SCORE
+
+    export const addScore = (player) => async (dispatch) => {
+        try {
+            const updatedPlayer = {...player, score: player.score + 1};
+            const {data} = await axios.put(`http://localhost:8000/api/players/${player.id}`, updatedPlayer);
+            dispatch({ type:ADD_SCORE_SUCCESS, payload: data });
+            dispatch(getPlayers());
+        } catch (error) {
+            console.log(error)
+        }
+        }
+
+
+    export const subScore = (player) => async (dispatch) => {
+        try {
+            const updatedPlayer = {...player, score: player.score - 1};
+            const {data} = await axios.put(`http://localhost:8000/api/players/${player.id}`, updatedPlayer);
+            dispatch({ type:SUB_SCORE_SUCCESS, payload: data });
+            dispatch(getPlayers());
+        } catch (error) {
+            console.log(error)
+
+        }
+    }
+
+    export const resetScores = () => async (dispatch) => {
+        try {
+          const { data } = await axios.put('http://localhost:8000/api/players', { score: 0 });
+          dispatch({ type: SCORE_RESET, payload: data });
+          dispatch(getPlayers());
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      
+    
 

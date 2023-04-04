@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {Table} from 'react-bootstrap'
 // import players from '../players'
-import PlayerButton from './PlayerButton'
+import PlayerButton from './WinButton'
 import { getPlayers } from '../actions/playerActions'
 
 function Players() {
@@ -25,6 +25,7 @@ function Players() {
         <tr>
           <th>#</th>
           <th>Name</th>
+          <th>Score</th>
           <th>Wins</th>
           <th>Champion</th>
         </tr>
@@ -35,6 +36,7 @@ function Players() {
       <tr key={player.name}>
         <td>{index + 1}</td>
         <td>{player.name}</td>
+        <td>{player.score}</td>
         <td>{player.wins}</td>
         <td>{player.champion}</td>
       </tr>

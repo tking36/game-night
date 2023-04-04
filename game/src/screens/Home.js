@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react'
+import React, {useState } from 'react'
 import {useSelector} from 'react-redux'
 import {Container, Row, Col} from 'react-bootstrap'
 import bootstrap from 'bootstrap'
 import Players from '../components/Players'
-import PlayerButton from '../components/PlayerButton'
+import PlayerButton from '../components/WinButton'
 import AddPlayer from '../components/AddPlayer'
 import DeletePlayer from '../components/DeletePlayer'
+import ChampButton from '../components/ChampButton'
+import ScoreButton from '../components/ScoreButton'
 // import players from '../players'
 
 const Home = () => {
 
   const players = useSelector(state => state.player.players);
+
+  
 
 
   return (
@@ -28,6 +32,8 @@ const Home = () => {
               <div key={player.name} >
                 <PlayerButton  player={player}/>
                 <DeletePlayer player={player}/>
+                <ChampButton player={player} />
+                <ScoreButton player={player} />
               </div>
             ))}
               

@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
-import {playerReducer, winReducer, addNewPlayer, deletePlayer} from "./reducers/playerReducer";
+import {playerReducer, winReducer, champReducer, addNewPlayer, deletePlayer, scoreReducer} from "./reducers/playerReducer";
 // import {players} from "./players";
 
 
@@ -33,7 +33,9 @@ export const initialState =
 
 const store = configureStore({
     reducer: {
+        score: scoreReducer,
         win: winReducer,
+        champ: champReducer,
         player: playerReducer,
         add: addNewPlayer,
         delete: deletePlayer, 
