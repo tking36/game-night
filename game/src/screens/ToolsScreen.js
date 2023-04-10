@@ -2,6 +2,7 @@ import React from 'react'
 import {Container, Row, Col, Button} from 'react-bootstrap'
 import Dice from '../components/Dice'
 import NavBar from '../components/NavBar'
+import RandomPlayer from '../components/RandomPlayer'
 
 const ToolsScreen = () => {
   return (
@@ -11,6 +12,9 @@ const ToolsScreen = () => {
         <Row>
             <Col>
                 <Dice />
+            </Col>
+            <Col>
+                <RandomPlayer />
             </Col>
         </Row>
     </Container>

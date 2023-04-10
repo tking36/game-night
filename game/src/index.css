@@ -5,8 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
   background-image: url("https://mcdn.wallpapersafari.com/medium/87/34/5VJrag.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 code {
@@ -40,6 +42,7 @@ code {
   justify-content: space-around;
   align-items: center;
   margin: auto;
+  width: 100vw;
 }
 
 .dice-container{
@@ -64,4 +67,14 @@ code {
 
 .dice-button{
   margin-bottom: 1rem;
+}
+
+.random-player{
+  margin-top: 10rem;
+  color: white;
+}
+
+.delete-col{
+  display: flex;
+  margin-top: 1.5rem;
 }

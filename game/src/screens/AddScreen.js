@@ -25,7 +25,7 @@ const AddScreen = () => {
             <Col xs={6}>
                 <AddPlayer/>
             </Col>
-            <Col>
+            <Col className='delete-col' >
                 {players.map(player => (
                     <DeletePlayer key={player.id} player={player}/>
                 ))}
