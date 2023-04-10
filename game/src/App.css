@@ -36,3 +36,37 @@
     transform: rotate(360deg);
   }
 }
+
+
+.players {
+  margin-left: 1rem;
+}
+
+.players-half {
+  margin-left: 0.5rem
+}
+
+.score-input{
+  margin: auto;
+  width: 40%; 
+}
+
+
+
+@media screen and (max-width: 770px) {
+  .players {
+    margin-left: 0;
+  }
+}
+
+@media screen and (min-width: 991px) and (max-width: 1200px) {
+  .players {
+    margin-left: 0;
+  }
+
+  .players-half {
+    margin-left: 0;
+  }
+}
+  
+

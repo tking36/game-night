@@ -7,7 +7,7 @@ import ScoreButton from './ScoreButton'
 import ChampButton from './ChampButton'
 import { getPlayers } from '../actions/playerActions'
 
-function Players() {
+function PlayerStats() {
   
   const dispatch = useDispatch();
 
@@ -27,8 +27,10 @@ function Players() {
         <tr>
           <th>#</th>
           <th>Name</th>
-          <th>Score</th>
-          <th>Score</th>
+          <th>Wins</th>
+          <th>Champion</th>
+          <th>Win</th>
+          <th>Champion</th>
         </tr>
       </thead>
       <tbody>
@@ -37,9 +39,10 @@ function Players() {
       <tr key={player.name}>
         <td>{index + 1}</td>
         <td>{player.name}</td>
-        <td>{player.score}</td>
-        <td><ScoreButton player={player}/></td>
-        
+        <td>{player.wins}</td>
+        <td>{player.champion}</td>
+        <td><PlayerButton player={player}/></td>
+        <td><ChampButton player={player}/></td>
       </tr>
     ))
   ) : (
@@ -53,4 +56,4 @@ function Players() {
   )
 }
 
-export default Players
+export default PlayerStats

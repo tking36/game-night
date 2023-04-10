@@ -15,7 +15,7 @@ const DeletePlayer = ({player}) => {
   return (
     <div>
         <Button variant="danger" size="sm" onClick={() => handleDeletePlayer(player)}>
-            {player.name} Del
+            Delete {player.name}
         </Button>
     </div>
   )

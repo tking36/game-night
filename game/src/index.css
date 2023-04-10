@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://mcdn.wallpapersafari.com/medium/87/34/5VJrag.jpg");
+  background-size: cover;
 }
 
 code {
@@ -18,4 +20,48 @@ code {
 
 .title {
   margin: auto;
+}
+
+.navLink {
+  color:white !important
+}
+
+.navBrand {
+  color:rgb(200, 22, 22) !important
+}
+
+.add-player{
+  color: rgb(200, 22, 22)!important;
+}
+
+.tool-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+}
+
+.dice-container{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10rem;
+}
+
+.dice-image{
+  border-radius: 10%;
+}
+
+.dice-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dice-button{
+  margin-bottom: 1rem;
 }

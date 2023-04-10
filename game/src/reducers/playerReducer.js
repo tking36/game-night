@@ -125,7 +125,9 @@ export const deletePlayer = (state = { loading: false, error: null, players: [] 
       console.log('Reset score:', action.payload);
       return {
         ...state,
-        score: 0,
+        players: state.players.map(player => 
+          player.id === action.payload.id ? action.payload : player
+        )
       };
     default:
       return state;

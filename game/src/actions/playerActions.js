@@ -2,6 +2,8 @@ import { ADD_WIN, SUB_WIN, PLAYER_LIST_REQUEST, PLAYER_LIST_SUCCESS, PLAYER_LIST
 import axios from "axios";
 
 
+
+
 // GET PLAYERS
 export const getPlayers = () => async (dispatch) => {
     try {
@@ -118,9 +120,9 @@ export const addWin = (player) => async (dispatch) => {
 
     // ADD AND SUBTRACT SCORE
 
-    export const addScore = (player) => async (dispatch) => {
+    export const addScore = (player, incrementValue) => async (dispatch) => {
         try {
-            const updatedPlayer = {...player, score: player.score + 1};
+            const updatedPlayer = {...player, score: player.score + parseInt(incrementValue)};
             const {data} = await axios.put(`http://localhost:8000/api/players/${player.id}`, updatedPlayer);
             dispatch({ type:ADD_SCORE_SUCCESS, payload: data });
             dispatch(getPlayers());
@@ -130,9 +132,9 @@ export const addWin = (player) => async (dispatch) => {
         }
 
 
-    export const subScore = (player) => async (dispatch) => {
+    export const subScore = (player, incrementValue) => async (dispatch) => {
         try {
-            const updatedPlayer = {...player, score: player.score - 1};
+            const updatedPlayer = {...player, score: player.score - parseInt(incrementValue)};
             const {data} = await axios.put(`http://localhost:8000/api/players/${player.id}`, updatedPlayer);
             dispatch({ type:SUB_SCORE_SUCCESS, payload: data });
             dispatch(getPlayers());
@@ -142,15 +144,27 @@ export const addWin = (player) => async (dispatch) => {
         }
     }
 
-    export const resetScores = () => async (dispatch) => {
+    export const resetScores = ({players}) => async (dispatch) => {
         try {
-          const { data } = await axios.put('http://localhost:8000/api/players', { score: 0 });
-          dispatch({ type: SCORE_RESET, payload: data });
+          
+          const updatedPlayers = await Promise.all(
+            players.map(async (player) => {
+              const { data } = await axios.put(`http://localhost:8000/api/players/${player.id}`, {
+                name: player.name,
+                score: 0,
+                wins: player.wins,
+                champion: player.champion
+              });
+              return data;
+            })
+          );
+          dispatch({ type: SCORE_RESET, payload: updatedPlayers });
           dispatch(getPlayers());
         } catch (error) {
           console.log(error);
         }
       }
+      
       
     
 

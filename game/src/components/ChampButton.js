@@ -19,12 +19,12 @@ const ChampButton = ({player}) => {
 
 
   return (
-    <div>
-        <Button variant="success" size="sm" onClick={() => handleChampAdd(player)}>
-            {player.name} Champ
+    <div className='button-group'>
+        <Button variant="success" onClick={() => handleChampAdd(player)}>
+            +
         </Button>
-        <Button variant="danger" size="sm" onClick={() => handleChampSub(player)}>
-            {player.name} Not Champ
+        <Button className="players-half" variant="danger" onClick={() => handleChampSub(player)}>
+            -
         </Button>
     </div>
   )

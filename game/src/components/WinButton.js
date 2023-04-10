@@ -26,13 +26,13 @@ function PlayerButton({ player }) {
   useEffect(() => {}, [dispatch, player]);
 
   return (
-    <Container>
-      <Button variant="success" size="sm" onClick={() => handleAddWin(player)}>
-        {player.name} Add
+    <Container className='button-group'>
+      <Button variant="success" onClick={() => handleAddWin(player)}>
+        +
       </Button>
 
-      <Button variant="danger" size="sm" onClick={() => handleSubWin(player)}>
-        {player.name} Sub
+      <Button className="players-half" variant="danger" onClick={() => handleSubWin(player)}>
+        -
       </Button>
     </Container>
   );

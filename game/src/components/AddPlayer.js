@@ -18,17 +18,20 @@ const AddPlayer = () => {
   return (
     <Form onSubmit={handleSubmit} >
       <Form.Group className="mb-3" controlId="formGroupEmail">
-        <Form.Label>Name:</Form.Label>
+        <Form.Label className='add-player' >Name:</Form.Label>
         <Form.Control 
             type="text" 
             placeholder="Enter Name" 
             value={name}
             onChange={(e) => setName(e.target.value)}/>
       </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit"  >
             Submit
         </Button>
     </Form>
+
+
+
   )
 }
 
